@@ -1,0 +1,503 @@
+{
+  "categories": [
+    {
+      "id": "49d3e3cc88e848f6",
+      "name": "人物",
+      "subcategories": [
+        {
+          "id": "be7aea9fc16a4432",
+          "name": "对象",
+          "children": []
+        },
+        {
+          "id": "ee03fae89bad4750",
+          "name": "身份",
+          "children": []
+        },
+        {
+          "id": "1e854cdfe96a4de0",
+          "name": "二次元角色",
+          "children": []
+        },
+        {
+          "id": "4aaeab9a8a97498a",
+          "name": "年龄",
+          "children": []
+        },
+        {
+          "id": "08d79678f9b64df8",
+          "name": "皮肤",
+          "children": []
+        },
+        {
+          "id": "1704efa66efe4af9",
+          "name": "身材",
+          "children": []
+        },
+        {
+          "id": "a1bba5ebc5734ff9",
+          "name": "脸型",
+          "children": []
+        },
+        {
+          "id": "1c136185547a4a6b",
+          "name": "发型",
+          "children": []
+        },
+        {
+          "id": "97e5a43906b04008",
+          "name": "面部",
+          "children": []
+        },
+        {
+          "id": "4079bd613b9344cf",
+          "name": "耳朵",
+          "children": []
+        },
+        {
+          "id": "4197f0934e874711",
+          "name": "眉毛",
+          "children": []
+        },
+        {
+          "id": "d262799a8ec44df1",
+          "name": "眼睛",
+          "children": []
+        },
+        {
+          "id": "bb13d38f3a5242e6",
+          "name": "瞳孔",
+          "children": []
+        },
+        {
+          "id": "c142c44bac0a4bae",
+          "name": "鼻子",
+          "children": []
+        },
+        {
+          "id": "17f9291b92c445ce",
+          "name": "嘴巴",
+          "children": []
+        },
+        {
+          "id": "369af8dcde994476",
+          "name": "牙齿",
+          "children": []
+        },
+        {
+          "id": "3f5274f2aa0c4f96",
+          "name": "舌头",
+          "children": []
+        },
+        {
+          "id": "aaf118aa5a9247af",
+          "name": "肩部",
+          "children": []
+        },
+        {
+          "id": "1df8029c7ee34824",
+          "name": "胸部",
+          "children": []
+        },
+        {
+          "id": "65fb554fa2864e30",
+          "name": "腰部",
+          "children": []
+        },
+        {
+          "id": "bc3a09e800d14333",
+          "name": "腹部",
+          "children": []
+        },
+        {
+          "id": "ea1fed2c7cef455e",
+          "name": "腿部",
+          "children": []
+        },
+        {
+          "id": "bc651c5a386045a1",
+          "name": "脚部",
+          "children": []
+        },
+        {
+          "id": "6bba656423444b2b",
+          "name": "翅膀",
+          "children": []
+        },
+        {
+          "id": "754c315cdee64acf",
+          "name": "穿刺、穿环、纹身",
+          "children": [
+            {
+              "id": "44e16a9d83ba4168",
+              "name": "耳环"
+            },
+            {
+              "id": "5cc0e2a7bbd34e27",
+              "name": "纹身"
+            },
+            {
+              "id": "2869895cee45485e",
+              "name": "身体穿刺"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "61676dcd6d1a4b0b",
+      "name": "动作",
+      "subcategories": [
+        {
+          "id": "baffbc763e374d04",
+          "name": "基础动作",
+          "children": []
+        },
+        {
+          "id": "4036ce676c43474c",
+          "name": "手部动作",
+          "children": [
+            {
+              "id": "9bb2f2baabb145e7",
+              "name": "手上拿着东西"
+            },
+            {
+              "id": "9a9e252f8da54c22",
+              "name": "手放在某处"
+            },
+            {
+              "id": "5b1349f14cf949bd",
+              "name": "手抓着东西"
+            }
+          ]
+        },
+        {
+          "id": "96ff98e850dc4b35",
+          "name": "腿部动作",
+          "children": []
+        },
+        {
+          "id": "1836ac258e8f4419",
+          "name": "其他动作",
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "89fae8c0206b4ca5",
+      "name": "服饰",
+      "subcategories": [
+        {
+          "id": "429c063a39024650",
+          "name": "面部饰品",
+          "children": [
+            {
+              "id": "e0ce25b2fac24643",
+              "name": "眼镜"
+            },
+            {
+              "id": "c7582e502409439d",
+              "name": "面具"
+            }
+          ]
+        },
+        {
+          "id": "c0be4cdf91b841cf",
+          "name": "耳饰",
+          "children": []
+        },
+        {
+          "id": "3e6b307f17dc4f59",
+          "name": "头饰",
+          "children": []
+        },
+        {
+          "id": "74cf10ead25441ae",
+          "name": "帽子",
+          "children": []
+        },
+        {
+          "id": "61db02dbd5e24f8c",
+          "name": "发饰",
+          "children": []
+        },
+        {
+          "id": "d52734a2e1684f59",
+          "name": "正装",
+          "children": []
+        },
+        {
+          "id": "28a0b477e3d94650",
+          "name": "风格",
+          "children": []
+        },
+        {
+          "id": "8db8fd8073f64d03",
+          "name": "休闲服",
+          "children": []
+        },
+        {
+          "id": "948dc626704e435e",
+          "name": "运动服",
+          "children": []
+        },
+        {
+          "id": "3224b8f6a4da41aa",
+          "name": "泳装",
+          "children": []
+        },
+        {
+          "id": "cb2a72b9e6eb4c14",
+          "name": "制服",
+          "children": []
+        },
+        {
+          "id": "96303a59920944a6",
+          "name": "上衣",
+          "children": []
+        },
+        {
+          "id": "4ecd10e225cd4883",
+          "name": "外套",
+          "children": []
+        },
+        {
+          "id": "e7d352a77d4445da",
+          "name": "领口",
+          "children": [
+            {
+              "id": "be93578ad5664c85",
+              "name": "围巾"
+            }
+          ]
+        },
+        {
+          "id": "9150bad46ac24753",
+          "name": "手部",
+          "children": [
+            {
+              "id": "0d82b0785bfd4898",
+              "name": "手臂"
+            },
+            {
+              "id": "c126c88979484723",
+              "name": "手腕"
+            },
+            {
+              "id": "4286f985ff1b48bc",
+              "name": "手套"
+            }
+          ]
+        },
+        {
+          "id": "5c9b8e9ca8454549",
+          "name": "腰部",
+          "children": []
+        },
+        {
+          "id": "65baf57bca704e22",
+          "name": "盔甲",
+          "children": []
+        },
+        {
+          "id": "c2b709d7406e4c31",
+          "name": "裙子",
+          "children": []
+        },
+        {
+          "id": "272d02f8d2234f0f",
+          "name": "裤子",
+          "children": []
+        },
+        {
+          "id": "7a59e133484f4121",
+          "name": "袜子",
+          "children": []
+        },
+        {
+          "id": "d8b3f9389a914785",
+          "name": "鞋子",
+          "children": [
+            {
+              "id": "ccfd1c5d78434426",
+              "name": "靴子"
+            },
+            {
+              "id": "85722db4e53f43d1",
+              "name": "鞋底"
+            }
+          ]
+        },
+        {
+          "id": "ffb74ef590194f2b",
+          "name": "装饰",
+          "children": []
+        },
+        {
+          "id": "48f0e2e8acd34bbb",
+          "name": "首饰",
+          "children": []
+        },
+        {
+          "id": "5b253553b2ad4c29",
+          "name": "其他",
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "197a1c32fd304df3",
+      "name": "表情",
+      "subcategories": [
+        {
+          "id": "74357bdc9fe0481e",
+          "name": "笑",
+          "children": []
+        },
+        {
+          "id": "ca7ff69df7874083",
+          "name": "哭",
+          "children": []
+        },
+        {
+          "id": "356f42d7714f49ca",
+          "name": "不开心",
+          "children": []
+        },
+        {
+          "id": "97366b6ce3134cf5",
+          "name": "蔑视",
+          "children": []
+        },
+        {
+          "id": "488f9e5fd2b842fb",
+          "name": "生气",
+          "children": []
+        },
+        {
+          "id": "8a9b5f254eb24de2",
+          "name": "其他表情",
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "f51c8f5363d14643",
+      "name": "画面",
+      "subcategories": [
+        {
+          "id": "1fb9800438ef4ecd",
+          "name": "画质",
+          "children": []
+        },
+        {
+          "id": "9e52cf131fa24218",
+          "name": "艺术风格",
+          "children": []
+        },
+        {
+          "id": "6683359817304fb0",
+          "name": "光照",
+          "children": []
+        },
+        {
+          "id": "f4b47b05256c44f9",
+          "name": "素描",
+          "children": []
+        },
+        {
+          "id": "e4dd80022e284a7c",
+          "name": "画笔",
+          "children": []
+        },
+        {
+          "id": "2375fadd71664338",
+          "name": "颜色",
+          "children": []
+        },
+        {
+          "id": "df152e1a3f724d6e",
+          "name": "背景",
+          "children": []
+        },
+        {
+          "id": "6ab2e606bc2b439b",
+          "name": "画面效果",
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "b8b5ec78c5194a58",
+      "name": "场景",
+      "subcategories": [
+        {
+          "id": "72674d185f2646d3",
+          "name": "季节",
+          "children": []
+        },
+        {
+          "id": "965a1a32eb934f9f",
+          "name": "天气",
+          "children": []
+        },
+        {
+          "id": "bba5b5cc7ca94370",
+          "name": "自然景观",
+          "children": []
+        },
+        {
+          "id": "004c0d9f58aa452b",
+          "name": "氛围",
+          "children": []
+        },
+        {
+          "id": "1640857e3bb24c7d",
+          "name": "室外",
+          "children": []
+        },
+        {
+          "id": "462c8789c7394426",
+          "name": "城市",
+          "children": []
+        },
+        {
+          "id": "86d3c07f7c0c4239",
+          "name": "室内",
+          "children": []
+        },
+        {
+          "id": "be97088399514005",
+          "name": "浴室",
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "e97267a378a9459d",
+      "name": "视角",
+      "subcategories": [
+        {
+          "id": "f4dd9c28c9ea40b4",
+          "name": "镜头",
+          "children": []
+        },
+        {
+          "id": "cff60d4ab6c444f0",
+          "name": "特写镜头",
+          "children": []
+        },
+        {
+          "id": "765499c152db462d",
+          "name": "镜头角度",
+          "children": []
+        },
+        {
+          "id": "0f18ed9bb4394fd3",
+          "name": "人物动作",
+          "children": []
+        }
+      ]
+    }
+  ]
+}

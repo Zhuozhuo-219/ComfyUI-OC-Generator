@@ -7,9 +7,12 @@ from pathlib import Path
 
 
 ROOT_DIR = Path(__file__).resolve().parents[1]
+DATA_DIR = ROOT_DIR / "data"
 RAWDATA_DIR = ROOT_DIR / "rawdata"
-DATA_JSON = RAWDATA_DIR / "data.json"
-TAGS_JSON = RAWDATA_DIR / "tags.json"
+DATA_JSON = DATA_DIR / "data.json"
+TAGS_JSON = DATA_DIR / "tags.json"
+FALLBACK_DATA_JSON = RAWDATA_DIR / "data.json"
+FALLBACK_TAGS_JSON = RAWDATA_DIR / "tags.json"
 
 
 @dataclass(frozen=True)
@@ -41,14 +44,20 @@ def _load_json(path: Path) -> dict:
         return json.load(file)
 
 
+def _preferred_json_path(primary: Path, fallback: Path) -> Path:
+    if primary.exists():
+        return primary
+    return fallback
+
+
 @lru_cache(maxsize=1)
 def load_category_tree() -> dict:
-    return _load_json(DATA_JSON)
+    return _load_json(_preferred_json_path(DATA_JSON, FALLBACK_DATA_JSON))
 
 
 @lru_cache(maxsize=1)
 def load_tag_templates() -> dict:
-    return _load_json(TAGS_JSON)
+    return _load_json(_preferred_json_path(TAGS_JSON, FALLBACK_TAGS_JSON))
 
 
 @lru_cache(maxsize=1)
