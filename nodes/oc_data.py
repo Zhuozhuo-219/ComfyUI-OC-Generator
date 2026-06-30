@@ -168,3 +168,33 @@ def get_catalog(block_key: str, top_category_names: tuple[str, ...]) -> BlockCat
         group_labels=ordered_groups,
         options=deduped_options,
     )
+
+
+@lru_cache(maxsize=128)
+def get_filtered_catalog(
+    block_key: str,
+    top_category_names: tuple[str, ...],
+    allowed_subcategory_names: tuple[str, ...] = (),
+    excluded_subcategory_names: tuple[str, ...] = (),
+) -> BlockCatalog:
+    base_catalog = get_catalog(block_key, top_category_names)
+    allowed = set(allowed_subcategory_names)
+    excluded = set(excluded_subcategory_names)
+
+    filtered_options = []
+    filtered_groups = set()
+
+    for option in base_catalog.options:
+        if allowed and option.subcategory_name not in allowed:
+            continue
+        if excluded and option.subcategory_name in excluded:
+            continue
+        filtered_options.append(option)
+        filtered_groups.add(option.group_label)
+
+    return BlockCatalog(
+        block_key=block_key,
+        top_categories=top_category_names,
+        group_labels=tuple(sorted(filtered_groups)),
+        options=tuple(filtered_options),
+    )
