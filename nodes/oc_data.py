@@ -198,3 +198,13 @@ def get_filtered_catalog(
         group_labels=tuple(sorted(filtered_groups)),
         options=tuple(filtered_options),
     )
+
+
+@lru_cache(maxsize=1)
+def get_color_catalog() -> BlockCatalog:
+    return get_filtered_catalog(
+        "palette_colors",
+        ("画面",),
+        ("颜色",),
+        (),
+    )

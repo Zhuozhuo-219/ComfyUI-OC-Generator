@@ -1,5 +1,6 @@
 OC_BLOCK_TYPE = "OC_BLOCK"
 OC_PART_TYPE = "OC_PART"
+OC_PALETTE_TYPE = "OC_PALETTE"
 OUTFIT_STYLE_PART_TYPE = "OC_PART_OUTFIT_STYLE"
 OUTFIT_UPPER_PART_TYPE = "OC_PART_OUTFIT_UPPER"
 OUTFIT_OUTER_PART_TYPE = "OC_PART_OUTFIT_OUTER"
@@ -44,6 +45,15 @@ OUTFIT_SLOT_ORDER = [
     "facewear",
     "jewelry",
     "decoration",
+]
+
+COLOR_ROLE_OPTIONS = [
+    "auto",
+    "primary",
+    "secondary",
+    "accent",
+    "neutral",
+    "none",
 ]
 
 

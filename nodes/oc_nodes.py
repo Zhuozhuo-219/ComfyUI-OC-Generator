@@ -23,6 +23,7 @@ from .oc_outfit_part_nodes import (
     OCOutfitUpperPartNode,
     OCOutfitWaistPartNode,
 )
+from .oc_palette_block import OCPaletteBlockNode
 from .oc_presentation_block import (
     OCPresentationCameraBlockNode,
     OCPresentationExpressionBlockNode,
@@ -41,6 +42,7 @@ NODE_CLASS_MAPPINGS = {
     "OCCharacterHairBlockNode": OCCharacterHairBlockNode,
     "OCCharacterAccessoriesBlockNode": OCCharacterAccessoriesBlockNode,
     "OCCharacterOutfitBlockNode": OCCharacterOutfitBlockNode,
+    "OCPaletteBlockNode": OCPaletteBlockNode,
     "OCPresentationPoseBlockNode": OCPresentationPoseBlockNode,
     "OCPresentationInteractionBlockNode": OCPresentationInteractionBlockNode,
     "OCPresentationExpressionBlockNode": OCPresentationExpressionBlockNode,
@@ -71,6 +73,7 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "OCCharacterHairBlockNode": "OC Character Hair Block",
     "OCCharacterAccessoriesBlockNode": "OC Character Accessories Block",
     "OCCharacterOutfitBlockNode": "OC Character Outfit Block",
+    "OCPaletteBlockNode": "OC Palette Block",
     "OCPresentationPoseBlockNode": "OC Presentation Pose Block",
     "OCPresentationInteractionBlockNode": "OC Presentation Interaction Block",
     "OCPresentationExpressionBlockNode": "OC Presentation Expression Block",

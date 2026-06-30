@@ -13,7 +13,7 @@ except ImportError:
 
 from .oc_block_base import stable_seed
 from .oc_data import BlockCatalog, PromptOption, get_filtered_catalog
-from .oc_types import ALL_GROUPS, OC_PART_TYPE, empty_part
+from .oc_types import ALL_GROUPS, COLOR_ROLE_OPTIONS, OC_PART_TYPE, empty_part
 
 
 class BaseOCPartNode(ComfyNodeABC):
@@ -81,6 +81,13 @@ class BaseOCPartNode(ComfyNodeABC):
                 ),
             },
             "optional": {
+                "color_role": (
+                    COLOR_ROLE_OPTIONS,
+                    {
+                        "default": "auto",
+                        "tooltip": "How this part should consume the global palette. auto lets Character Outfit Block assign a role by slot.",
+                    },
+                ),
                 "seed": (
                     IO.INT,
                     {
@@ -107,10 +114,11 @@ class BaseOCPartNode(ComfyNodeABC):
                 return index
         return -1
 
-    def build_part(self, group, mode, option, seed=0):
+    def build_part(self, group, mode, option, color_role="auto", seed=0):
         if mode == "unset":
             empty = empty_part(self.PART_SLOT, self.PART_CATEGORY)
             empty["part_type"] = self.PART_KIND
+            empty["color_role"] = color_role
             return (empty, "", f"{self.PART_CATEGORY}: unset")
 
         catalog = self._catalog()
@@ -146,13 +154,14 @@ class BaseOCPartNode(ComfyNodeABC):
             "requested_group": group,
             "requested_option": option,
             "requested_option_in_group": option_in_group,
+            "color_role": color_role,
         }
         mismatch_note = ""
         if not option_in_group:
             mismatch_note = " requested option not in current group; fallback applied."
         debug_text = (
             f"{self.PART_CATEGORY}: {selected.prompt} "
-            f"[slot={self.PART_SLOT}, group={selected.group_label}, mode={mode}, index={selected_index}/{len(pool)}, option_in_group={option_in_group}]"
+            f"[slot={self.PART_SLOT}, group={selected.group_label}, mode={mode}, color_role={color_role}, index={selected_index}/{len(pool)}, option_in_group={option_in_group}]"
             f"{mismatch_note}"
         )
         return (part, selected.prompt, debug_text)

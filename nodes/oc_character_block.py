@@ -14,6 +14,7 @@ except ImportError:
 from .oc_block_base import BaseOCBlockNode
 from .oc_types import (
     OC_BLOCK_TYPE,
+    OC_PALETTE_TYPE,
     OUTFIT_DECORATION_PART_TYPE,
     OUTFIT_FACEWEAR_PART_TYPE,
     OUTFIT_FOOTWEAR_PART_TYPE,
@@ -24,6 +25,7 @@ from .oc_types import (
     OUTFIT_LOWER_PART_TYPE,
     OUTFIT_NECKWEAR_PART_TYPE,
     OUTFIT_OUTER_PART_TYPE,
+    OUTFIT_SLOT_ORDER,
     OUTFIT_STYLE_PART_TYPE,
     OUTFIT_UPPER_PART_TYPE,
     OUTFIT_WAIST_PART_TYPE,
@@ -35,6 +37,65 @@ def _normalized_part(value) -> dict | None:
     if isinstance(value, dict):
         return value
     return None
+
+
+def _normalized_palette(value) -> dict | None:
+    if isinstance(value, dict) and value.get("palette_type") == "oc_palette":
+        return value
+    return None
+
+
+DEFAULT_SLOT_COLOR_ROLES = {
+    "base_style": "none",
+    "upper": "primary",
+    "outer": "primary",
+    "lower": "secondary",
+    "legwear": "neutral",
+    "footwear": "neutral",
+    "neckwear": "accent",
+    "handwear": "secondary",
+    "waist": "accent",
+    "headwear": "accent",
+    "facewear": "neutral",
+    "jewelry": "accent",
+    "decoration": "accent",
+}
+
+
+def _slot_name(input_name: str) -> str:
+    return input_name.removesuffix("_part")
+
+
+def _effective_color_role(part: dict, slot_name: str) -> str:
+    role = str(part.get("color_role", "auto") or "auto").strip().lower()
+    if role == "auto":
+        return DEFAULT_SLOT_COLOR_ROLES.get(slot_name, "none")
+    if role in {"primary", "secondary", "accent", "neutral", "none"}:
+        return role
+    return DEFAULT_SLOT_COLOR_ROLES.get(slot_name, "none")
+
+
+def _resolve_palette_color(palette: dict | None, role: str, role_counters: dict[str, int]) -> str | None:
+    if not palette or role == "none":
+        return None
+    if role == "primary":
+        primary_colors = [str(color).strip() for color in palette.get("primary", []) if str(color).strip()]
+        if not primary_colors:
+            return None
+        color = primary_colors[role_counters["primary"] % len(primary_colors)]
+        role_counters["primary"] += 1
+        return color
+    color = str(palette.get(role, "")).strip()
+    if color:
+        role_counters[role] += 1
+        return color
+    return None
+
+
+def _apply_color(prompt: str, color: str | None) -> str:
+    if not color:
+        return prompt
+    return f"{color} {prompt}"
 
 
 class OCCharacterBodyBlockNode(BaseOCBlockNode):
@@ -140,6 +201,13 @@ class OCCharacterOutfitBlockNode(ComfyNodeABC):
                 input_type,
                 {"forceInput": True, "tooltip": tooltip},
             )
+        optional_inputs["palette"] = (
+            OC_PALETTE_TYPE,
+            {
+                "forceInput": True,
+                "tooltip": "Optional coordinated outfit palette. When connected, each part can consume a palette role such as primary or accent.",
+            },
+        )
 
         return {
             "required": {
@@ -165,28 +233,43 @@ class OCCharacterOutfitBlockNode(ComfyNodeABC):
         parts = []
         debug_lines = []
         seen_prompts = set()
+        palette = _normalized_palette(kwargs.get("palette"))
+        role_counters = {"primary": 0, "secondary": 0, "accent": 0, "neutral": 0}
 
         for input_name, _input_type, _tooltip in self.SLOT_INPUTS:
             part = _normalized_part(kwargs.get(input_name))
             if not part:
                 continue
-            prompt = str(part.get("prompt", "")).strip()
-            if not prompt:
+            base_prompt = str(part.get("prompt", "")).strip()
+            if not base_prompt:
                 debug_lines.append(f"{input_name}: unset")
                 continue
-            if dedupe and prompt in seen_prompts:
-                debug_lines.append(f"{input_name}: duplicate skipped -> {prompt}")
+            slot_name = _slot_name(input_name)
+            color_role = _effective_color_role(part, slot_name)
+            color = _resolve_palette_color(palette, color_role, role_counters)
+            resolved_prompt = _apply_color(base_prompt, color)
+            if dedupe and resolved_prompt in seen_prompts:
+                debug_lines.append(f"{input_name}: duplicate skipped -> {resolved_prompt}")
                 continue
-            seen_prompts.add(prompt)
-            parts.append(part)
-            debug_lines.append(f"{input_name}: {prompt} [{part.get('mode', 'fixed')}]")
+            seen_prompts.add(resolved_prompt)
+            part_with_color = dict(part)
+            part_with_color["color_role_resolved"] = color_role
+            part_with_color["resolved_color"] = color or ""
+            part_with_color["resolved_prompt"] = resolved_prompt
+            part_with_color["slot_name"] = slot_name
+            part_with_color["slot_order"] = OUTFIT_SLOT_ORDER.index(slot_name) if slot_name in OUTFIT_SLOT_ORDER else -1
+            parts.append(part_with_color)
+            debug_lines.append(
+                f"{input_name}: {resolved_prompt} "
+                f"[mode={part.get('mode', 'fixed')}, role={color_role}, color={color or 'none'}]"
+            )
 
         if not parts:
             empty = empty_block("character_outfit", "Outfit")
             empty["mode"] = "composed"
             return (empty, "", "Outfit: no active parts")
 
-        final_prompt = separator.join(part["prompt"] for part in parts if part.get("prompt"))
+        final_prompt = separator.join(part["resolved_prompt"] for part in parts if part.get("resolved_prompt"))
         block = {
             "block_type": "character_outfit",
             "category": "Outfit",
@@ -202,5 +285,6 @@ class OCCharacterOutfitBlockNode(ComfyNodeABC):
             "option_id": "",
             "note": "",
             "parts": parts,
+            "palette": palette or {},
         }
         return (block, final_prompt, "\n".join(debug_lines))
