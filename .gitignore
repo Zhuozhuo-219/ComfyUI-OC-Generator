@@ -216,3 +216,17 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Local editor / OS files
+.vscode/
+.idea/
+*.code-workspace
+.DS_Store
+Thumbs.db
+
+# Local Python version markers
+.python-version
+
+# Local datasets and personal work area
+/rawdata/
+/.personal-worklog/

@@ -1,0 +1,2 @@
+# This custom node currently has no standalone PyPI dependencies.
+# It relies on the host ComfyUI runtime for `comfy` imports when loaded by ComfyUI.
