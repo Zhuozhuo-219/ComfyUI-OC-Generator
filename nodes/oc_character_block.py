@@ -12,7 +12,20 @@ except ImportError:
     ComfyNodeABC = object
 
 from .oc_block_base import BaseOCBlockNode
-from .oc_types import OC_BLOCK_TYPE, OC_PART_TYPE, empty_block
+from .oc_types import (
+    OC_BLOCK_TYPE,
+    OUTFIT_DECORATION_PART_TYPE,
+    OUTFIT_FACEWEAR_PART_TYPE,
+    OUTFIT_FOOTWEAR_PART_TYPE,
+    OUTFIT_HEADWEAR_PART_TYPE,
+    OUTFIT_JEWELRY_PART_TYPE,
+    OUTFIT_LEGWEAR_PART_TYPE,
+    OUTFIT_LOWER_PART_TYPE,
+    OUTFIT_OUTER_PART_TYPE,
+    OUTFIT_STYLE_PART_TYPE,
+    OUTFIT_UPPER_PART_TYPE,
+    empty_block,
+)
 
 
 def _normalized_part(value) -> dict | None:
@@ -111,24 +124,24 @@ class OCCharacterOutfitBlockNode(ComfyNodeABC):
     )
 
     SLOT_INPUTS = (
-        ("base_style_part", "Outfit style input."),
-        ("upper_part", "Upper clothing input such as tops and shirts."),
-        ("outer_part", "Outerwear input such as coats and jackets."),
-        ("lower_part", "Lower clothing input such as pants or skirts."),
-        ("legwear_part", "Legwear input such as socks or stockings."),
-        ("footwear_part", "Footwear input such as shoes or boots."),
-        ("headwear_part", "Headwear input such as hats or hair decorations."),
-        ("facewear_part", "Facewear input such as glasses or masks."),
-        ("jewelry_part", "Jewelry input such as earrings and necklaces."),
-        ("decoration_part", "Decorative accessory input."),
+        ("base_style_part", OUTFIT_STYLE_PART_TYPE, "Outfit style input."),
+        ("upper_part", OUTFIT_UPPER_PART_TYPE, "Upper clothing input such as tops and shirts."),
+        ("outer_part", OUTFIT_OUTER_PART_TYPE, "Outerwear input such as coats and jackets."),
+        ("lower_part", OUTFIT_LOWER_PART_TYPE, "Lower clothing input such as pants or skirts."),
+        ("legwear_part", OUTFIT_LEGWEAR_PART_TYPE, "Legwear input such as socks or stockings."),
+        ("footwear_part", OUTFIT_FOOTWEAR_PART_TYPE, "Footwear input such as shoes or boots."),
+        ("headwear_part", OUTFIT_HEADWEAR_PART_TYPE, "Headwear input such as hats or hair decorations."),
+        ("facewear_part", OUTFIT_FACEWEAR_PART_TYPE, "Facewear input such as glasses or masks."),
+        ("jewelry_part", OUTFIT_JEWELRY_PART_TYPE, "Jewelry input such as earrings and necklaces."),
+        ("decoration_part", OUTFIT_DECORATION_PART_TYPE, "Decorative accessory input."),
     )
 
     @classmethod
     def INPUT_TYPES(cls):
         optional_inputs = {}
-        for input_name, tooltip in cls.SLOT_INPUTS:
+        for input_name, input_type, tooltip in cls.SLOT_INPUTS:
             optional_inputs[input_name] = (
-                OC_PART_TYPE,
+                input_type,
                 {"forceInput": True, "tooltip": tooltip},
             )
 
@@ -157,7 +170,7 @@ class OCCharacterOutfitBlockNode(ComfyNodeABC):
         debug_lines = []
         seen_prompts = set()
 
-        for input_name, _tooltip in self.SLOT_INPUTS:
+        for input_name, _input_type, _tooltip in self.SLOT_INPUTS:
             part = _normalized_part(kwargs.get(input_name))
             if not part:
                 continue

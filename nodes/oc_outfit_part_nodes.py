@@ -3,6 +3,18 @@ from __future__ import annotations
 from inspect import cleandoc
 
 from .oc_part_base import BaseOCPartNode
+from .oc_types import (
+    OUTFIT_DECORATION_PART_TYPE,
+    OUTFIT_FACEWEAR_PART_TYPE,
+    OUTFIT_FOOTWEAR_PART_TYPE,
+    OUTFIT_HEADWEAR_PART_TYPE,
+    OUTFIT_JEWELRY_PART_TYPE,
+    OUTFIT_LEGWEAR_PART_TYPE,
+    OUTFIT_LOWER_PART_TYPE,
+    OUTFIT_OUTER_PART_TYPE,
+    OUTFIT_STYLE_PART_TYPE,
+    OUTFIT_UPPER_PART_TYPE,
+)
 
 
 class OCOutfitStylePartNode(BaseOCPartNode):
@@ -12,6 +24,7 @@ class OCOutfitStylePartNode(BaseOCPartNode):
     PART_KIND = "outfit_style"
     PART_SLOT = "base_style"
     PART_CATEGORY = "Outfit Style"
+    PART_OUTPUT_TYPE = OUTFIT_STYLE_PART_TYPE
     TOP_CATEGORY_NAMES = ("服饰",)
     ALLOWED_SUBCATEGORY_NAMES = ("正装", "风格", "休闲服", "运动服", "泳装", "制服", "盔甲")
 
@@ -23,6 +36,7 @@ class OCOutfitUpperPartNode(BaseOCPartNode):
     PART_KIND = "outfit_upper"
     PART_SLOT = "upper"
     PART_CATEGORY = "Outfit Upper"
+    PART_OUTPUT_TYPE = OUTFIT_UPPER_PART_TYPE
     TOP_CATEGORY_NAMES = ("服饰",)
     ALLOWED_SUBCATEGORY_NAMES = ("上衣",)
 
@@ -34,6 +48,7 @@ class OCOutfitOuterPartNode(BaseOCPartNode):
     PART_KIND = "outfit_outer"
     PART_SLOT = "outer"
     PART_CATEGORY = "Outfit Outer"
+    PART_OUTPUT_TYPE = OUTFIT_OUTER_PART_TYPE
     TOP_CATEGORY_NAMES = ("服饰",)
     ALLOWED_SUBCATEGORY_NAMES = ("外套",)
 
@@ -45,6 +60,7 @@ class OCOutfitPantsPartNode(BaseOCPartNode):
     PART_KIND = "outfit_pants"
     PART_SLOT = "lower"
     PART_CATEGORY = "Outfit Pants"
+    PART_OUTPUT_TYPE = OUTFIT_LOWER_PART_TYPE
     TOP_CATEGORY_NAMES = ("服饰",)
     ALLOWED_SUBCATEGORY_NAMES = ("裤子",)
 
@@ -56,6 +72,7 @@ class OCOutfitSkirtPartNode(BaseOCPartNode):
     PART_KIND = "outfit_skirt"
     PART_SLOT = "lower"
     PART_CATEGORY = "Outfit Skirt"
+    PART_OUTPUT_TYPE = OUTFIT_LOWER_PART_TYPE
     TOP_CATEGORY_NAMES = ("服饰",)
     ALLOWED_SUBCATEGORY_NAMES = ("裙子",)
 
@@ -67,6 +84,7 @@ class OCOutfitLegwearPartNode(BaseOCPartNode):
     PART_KIND = "outfit_legwear"
     PART_SLOT = "legwear"
     PART_CATEGORY = "Outfit Legwear"
+    PART_OUTPUT_TYPE = OUTFIT_LEGWEAR_PART_TYPE
     TOP_CATEGORY_NAMES = ("服饰",)
     ALLOWED_SUBCATEGORY_NAMES = ("袜子",)
 
@@ -78,6 +96,7 @@ class OCOutfitFootwearPartNode(BaseOCPartNode):
     PART_KIND = "outfit_footwear"
     PART_SLOT = "footwear"
     PART_CATEGORY = "Outfit Footwear"
+    PART_OUTPUT_TYPE = OUTFIT_FOOTWEAR_PART_TYPE
     TOP_CATEGORY_NAMES = ("服饰",)
     ALLOWED_SUBCATEGORY_NAMES = ("鞋子",)
 
@@ -89,6 +108,7 @@ class OCOutfitHeadwearPartNode(BaseOCPartNode):
     PART_KIND = "outfit_headwear"
     PART_SLOT = "headwear"
     PART_CATEGORY = "Outfit Headwear"
+    PART_OUTPUT_TYPE = OUTFIT_HEADWEAR_PART_TYPE
     TOP_CATEGORY_NAMES = ("服饰",)
     ALLOWED_SUBCATEGORY_NAMES = ("帽子", "头饰", "发饰")
 
@@ -100,6 +120,7 @@ class OCOutfitFacewearPartNode(BaseOCPartNode):
     PART_KIND = "outfit_facewear"
     PART_SLOT = "facewear"
     PART_CATEGORY = "Outfit Facewear"
+    PART_OUTPUT_TYPE = OUTFIT_FACEWEAR_PART_TYPE
     TOP_CATEGORY_NAMES = ("服饰",)
     ALLOWED_SUBCATEGORY_NAMES = ("面部饰品",)
 
@@ -111,5 +132,18 @@ class OCOutfitJewelryPartNode(BaseOCPartNode):
     PART_KIND = "outfit_jewelry"
     PART_SLOT = "jewelry"
     PART_CATEGORY = "Outfit Jewelry"
+    PART_OUTPUT_TYPE = OUTFIT_JEWELRY_PART_TYPE
     TOP_CATEGORY_NAMES = ("服饰",)
     ALLOWED_SUBCATEGORY_NAMES = ("耳饰", "首饰")
+
+
+class OCOutfitDecorationPartNode(BaseOCPartNode):
+    """Outfit decoration part node for decorative clothing details."""
+
+    DESCRIPTION = cleandoc(__doc__)
+    PART_KIND = "outfit_decoration"
+    PART_SLOT = "decoration"
+    PART_CATEGORY = "Outfit Decoration"
+    PART_OUTPUT_TYPE = OUTFIT_DECORATION_PART_TYPE
+    TOP_CATEGORY_NAMES = ("服饰",)
+    ALLOWED_SUBCATEGORY_NAMES = ("装饰", "其他")

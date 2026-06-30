@@ -23,32 +23,41 @@ def first_value(value, default=None):
 
 
 def flatten_connected_blocks(kwargs: dict) -> list[dict]:
+    def flatten_item(item):
+        if isinstance(item, dict) and item.get("block_type") == "merge_bundle":
+            flattened_items = []
+            for child in item.get("items", []):
+                flattened_items.extend(flatten_item(child))
+            return flattened_items
+        if isinstance(item, dict):
+            return [item]
+        if isinstance(item, str) and item.strip():
+            return [
+                {
+                    "block_type": "raw",
+                    "category": "Raw",
+                    "group": "",
+                    "label": item.strip(),
+                    "prompt": item.strip(),
+                    "mode": "fixed",
+                    "index": 0,
+                    "pool_size": 1,
+                    "top_category": "",
+                    "subcategory": "",
+                    "child_category": "",
+                    "option_id": "",
+                    "note": "",
+                }
+            ]
+        return []
+
     flattened = []
     for key, value in kwargs.items():
         if not key.startswith("oc_block_"):
             continue
         values = value if isinstance(value, list) else [value]
         for item in values:
-            if isinstance(item, dict):
-                flattened.append(item)
-            elif isinstance(item, str) and item.strip():
-                flattened.append(
-                    {
-                        "block_type": "raw",
-                        "category": "Raw",
-                        "group": "",
-                        "label": item.strip(),
-                        "prompt": item.strip(),
-                        "mode": "fixed",
-                        "index": 0,
-                        "pool_size": 1,
-                        "top_category": "",
-                        "subcategory": "",
-                        "child_category": "",
-                        "option_id": "",
-                        "note": "",
-                    }
-                )
+            flattened.extend(flatten_item(item))
     return flattened
 
 

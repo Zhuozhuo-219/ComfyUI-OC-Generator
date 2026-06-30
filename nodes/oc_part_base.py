@@ -22,7 +22,6 @@ class BaseOCPartNode(ComfyNodeABC):
     DESCRIPTION = cleandoc(__doc__)
     CATEGORY = "OC Generator/Parts"
     FUNCTION = "build_part"
-    RETURN_TYPES = (OC_PART_TYPE, IO.STRING, IO.STRING)
     RETURN_NAMES = ("oc_part", "prompt_preview", "debug_text")
     OUTPUT_TOOLTIPS = (
         "Structured local part data for Character Outfit Block.",
@@ -33,8 +32,15 @@ class BaseOCPartNode(ComfyNodeABC):
     PART_KIND = "generic"
     PART_SLOT = "generic"
     PART_CATEGORY = "Generic Part"
+    PART_OUTPUT_TYPE = OC_PART_TYPE
     TOP_CATEGORY_NAMES: tuple[str, ...] = ()
     ALLOWED_SUBCATEGORY_NAMES: tuple[str, ...] = ()
+
+    def __init_subclass__(cls, **kwargs):
+        super().__init_subclass__(**kwargs)
+        cls.RETURN_TYPES = (cls.PART_OUTPUT_TYPE, IO.STRING, IO.STRING)
+
+    RETURN_TYPES = (OC_PART_TYPE, IO.STRING, IO.STRING)
 
     @classmethod
     def _catalog(cls) -> BlockCatalog:

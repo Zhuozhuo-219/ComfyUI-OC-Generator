@@ -6,7 +6,9 @@ from .oc_character_block import (
     OCCharacterOutfitBlockNode,
 )
 from .oc_generator import OCGeneratorNode
+from .oc_merge_block import OCBlockMergeNode
 from .oc_outfit_part_nodes import (
+    OCOutfitDecorationPartNode,
     OCOutfitFacewearPartNode,
     OCOutfitFootwearPartNode,
     OCOutfitHeadwearPartNode,
@@ -29,6 +31,7 @@ NODE_CLASS_MAPPINGS = {
     "OCCharacterHairBlockNode": OCCharacterHairBlockNode,
     "OCCharacterAccessoriesBlockNode": OCCharacterAccessoriesBlockNode,
     "OCCharacterOutfitBlockNode": OCCharacterOutfitBlockNode,
+    "OCBlockMergeNode": OCBlockMergeNode,
     "OCOutfitStylePartNode": OCOutfitStylePartNode,
     "OCOutfitUpperPartNode": OCOutfitUpperPartNode,
     "OCOutfitOuterPartNode": OCOutfitOuterPartNode,
@@ -39,6 +42,7 @@ NODE_CLASS_MAPPINGS = {
     "OCOutfitHeadwearPartNode": OCOutfitHeadwearPartNode,
     "OCOutfitFacewearPartNode": OCOutfitFacewearPartNode,
     "OCOutfitJewelryPartNode": OCOutfitJewelryPartNode,
+    "OCOutfitDecorationPartNode": OCOutfitDecorationPartNode,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
@@ -49,6 +53,7 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "OCCharacterHairBlockNode": "OC Character Hair Block",
     "OCCharacterAccessoriesBlockNode": "OC Character Accessories Block",
     "OCCharacterOutfitBlockNode": "OC Character Outfit Block",
+    "OCBlockMergeNode": "OC Block Merge",
     "OCOutfitStylePartNode": "OC Outfit Style Part",
     "OCOutfitUpperPartNode": "OC Outfit Upper Part",
     "OCOutfitOuterPartNode": "OC Outfit Outer Part",
@@ -59,4 +64,5 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "OCOutfitHeadwearPartNode": "OC Outfit Headwear Part",
     "OCOutfitFacewearPartNode": "OC Outfit Facewear Part",
     "OCOutfitJewelryPartNode": "OC Outfit Jewelry Part",
+    "OCOutfitDecorationPartNode": "OC Outfit Decoration Part",
 }
