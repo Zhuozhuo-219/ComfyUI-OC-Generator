@@ -7,13 +7,16 @@ from .oc_types import (
     OUTFIT_DECORATION_PART_TYPE,
     OUTFIT_FACEWEAR_PART_TYPE,
     OUTFIT_FOOTWEAR_PART_TYPE,
+    OUTFIT_HANDWEAR_PART_TYPE,
     OUTFIT_HEADWEAR_PART_TYPE,
     OUTFIT_JEWELRY_PART_TYPE,
     OUTFIT_LEGWEAR_PART_TYPE,
     OUTFIT_LOWER_PART_TYPE,
+    OUTFIT_NECKWEAR_PART_TYPE,
     OUTFIT_OUTER_PART_TYPE,
     OUTFIT_STYLE_PART_TYPE,
     OUTFIT_UPPER_PART_TYPE,
+    OUTFIT_WAIST_PART_TYPE,
 )
 
 
@@ -99,6 +102,42 @@ class OCOutfitFootwearPartNode(BaseOCPartNode):
     PART_OUTPUT_TYPE = OUTFIT_FOOTWEAR_PART_TYPE
     TOP_CATEGORY_NAMES = ("服饰",)
     ALLOWED_SUBCATEGORY_NAMES = ("鞋子",)
+
+
+class OCOutfitNeckwearPartNode(BaseOCPartNode):
+    """Outfit neckwear part node for scarves and collar accessories."""
+
+    DESCRIPTION = cleandoc(__doc__)
+    PART_KIND = "outfit_neckwear"
+    PART_SLOT = "neckwear"
+    PART_CATEGORY = "Outfit Neckwear"
+    PART_OUTPUT_TYPE = OUTFIT_NECKWEAR_PART_TYPE
+    TOP_CATEGORY_NAMES = ("服饰",)
+    ALLOWED_SUBCATEGORY_NAMES = ("领口",)
+
+
+class OCOutfitHandwearPartNode(BaseOCPartNode):
+    """Outfit handwear part node for gloves and arm or wrist wearables."""
+
+    DESCRIPTION = cleandoc(__doc__)
+    PART_KIND = "outfit_handwear"
+    PART_SLOT = "handwear"
+    PART_CATEGORY = "Outfit Handwear"
+    PART_OUTPUT_TYPE = OUTFIT_HANDWEAR_PART_TYPE
+    TOP_CATEGORY_NAMES = ("服饰",)
+    ALLOWED_SUBCATEGORY_NAMES = ("手部",)
+
+
+class OCOutfitWaistPartNode(BaseOCPartNode):
+    """Outfit waist part node for belts and waist accessories."""
+
+    DESCRIPTION = cleandoc(__doc__)
+    PART_KIND = "outfit_waist"
+    PART_SLOT = "waist"
+    PART_CATEGORY = "Outfit Waist"
+    PART_OUTPUT_TYPE = OUTFIT_WAIST_PART_TYPE
+    TOP_CATEGORY_NAMES = ("服饰",)
+    ALLOWED_SUBCATEGORY_NAMES = ("腰部",)
 
 
 class OCOutfitHeadwearPartNode(BaseOCPartNode):

@@ -17,13 +17,16 @@ from .oc_types import (
     OUTFIT_DECORATION_PART_TYPE,
     OUTFIT_FACEWEAR_PART_TYPE,
     OUTFIT_FOOTWEAR_PART_TYPE,
+    OUTFIT_HANDWEAR_PART_TYPE,
     OUTFIT_HEADWEAR_PART_TYPE,
     OUTFIT_JEWELRY_PART_TYPE,
     OUTFIT_LEGWEAR_PART_TYPE,
     OUTFIT_LOWER_PART_TYPE,
+    OUTFIT_NECKWEAR_PART_TYPE,
     OUTFIT_OUTER_PART_TYPE,
     OUTFIT_STYLE_PART_TYPE,
     OUTFIT_UPPER_PART_TYPE,
+    OUTFIT_WAIST_PART_TYPE,
     empty_block,
 )
 
@@ -90,23 +93,13 @@ class OCCharacterHairBlockNode(BaseOCBlockNode):
 
 
 class OCCharacterAccessoriesBlockNode(BaseOCBlockNode):
-    """Character accessories block for piercing, jewelry, and other decorative add-ons."""
+    """Character accessories block for non-clothing body add-ons such as piercing and tattoos."""
 
     DESCRIPTION = cleandoc(__doc__)
     BLOCK_KEY = "character_accessories"
     BLOCK_CATEGORY = "Accessories"
-    TOP_CATEGORY_NAMES = ("人物", "服饰")
-    ALLOWED_SUBCATEGORY_NAMES = (
-        "穿刺、穿环、纹身",
-        "面部饰品",
-        "耳饰",
-        "头饰",
-        "帽子",
-        "发饰",
-        "装饰",
-        "首饰",
-        "其他",
-    )
+    TOP_CATEGORY_NAMES = ("人物",)
+    ALLOWED_SUBCATEGORY_NAMES = ("穿刺、穿环、纹身",)
 
 
 class OCCharacterOutfitBlockNode(ComfyNodeABC):
@@ -130,6 +123,9 @@ class OCCharacterOutfitBlockNode(ComfyNodeABC):
         ("lower_part", OUTFIT_LOWER_PART_TYPE, "Lower clothing input such as pants or skirts."),
         ("legwear_part", OUTFIT_LEGWEAR_PART_TYPE, "Legwear input such as socks or stockings."),
         ("footwear_part", OUTFIT_FOOTWEAR_PART_TYPE, "Footwear input such as shoes or boots."),
+        ("neckwear_part", OUTFIT_NECKWEAR_PART_TYPE, "Neckwear input such as scarves and collar accessories."),
+        ("handwear_part", OUTFIT_HANDWEAR_PART_TYPE, "Handwear input such as gloves, wristwear, and arm decorations."),
+        ("waist_part", OUTFIT_WAIST_PART_TYPE, "Waistwear input such as belts and waist accessories."),
         ("headwear_part", OUTFIT_HEADWEAR_PART_TYPE, "Headwear input such as hats or hair decorations."),
         ("facewear_part", OUTFIT_FACEWEAR_PART_TYPE, "Facewear input such as glasses or masks."),
         ("jewelry_part", OUTFIT_JEWELRY_PART_TYPE, "Jewelry input such as earrings and necklaces."),
